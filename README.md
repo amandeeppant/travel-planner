@@ -1,4 +1,4 @@
-# Intelligent Travel Planner (Streamlit + LangGraph + Groq)
+# Trip Is My Life (Intelligent Travel Planner) (Streamlit + LangGraph + Groq)
 
 A simple Streamlit UI wrapped around the LangGraph travel-planning workflow
 from the original notebook.
