@@ -6,16 +6,22 @@ from planner.graph import run_planner
 
 load_dotenv()  # loads GROQ_API_KEY from a local .env file if present
 
+try:
+    if "GROQ_API_KEY" in st.secrets:
+        os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
+except Exception:
+    pass
 st.set_page_config(page_title="AI Travel Planner", page_icon="🧳", layout="centered")
 
-st.title("🧳 Intelligent Travel Planner")
+st.title("🧳 Trip Is My Life (Intelligent Travel Planner)")
 st.caption("Powered by LangGraph + Groq (Llama 3.3 70B)")
 
 # Warn early if the API key isn't configured, instead of failing mid-run
 if not os.environ.get("GROQ_API_KEY"):
     st.warning(
-        "GROQ_API_KEY is not set. Add it to a `.env` file in the project root "
-        "(see `.env.example`) or as an environment variable, then restart the app."
+    "GROQ_API_KEY is not configured.\n\n"
+    "• Local development: Add it to a `.env` file.\n"
+    "• Streamlit Community Cloud: Add it under **App → Settings → Secrets**."
     )
 
 with st.form("trip_form"):
